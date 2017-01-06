@@ -1,0 +1,11 @@
+<div class="navbar-main">
+  <div class="container">
+    <ul class="nav navbar-nav">
+      <li ng-repeat="menuItem in $ctrl.navbarMenu" class="nav-item">
+        <a ui-sref="{{ menuItem.state }}">
+          {{ menuItem.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
