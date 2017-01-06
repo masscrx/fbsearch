@@ -22,11 +22,18 @@ angular.module('app', [
   $locationProvider.html5Mode(true).hashPrefix('!');
 
   $stateProvider
-
-    .state('groups', {
+    
+    .state({
       url: '/',
-      template: 'Groups page',
-      controller: function() { return console.log('test')}
+      name: 'app',
+      views: {
+        sidebar: 'sidebar'
+      },
+      resolve: {
+        groups: function() {
+          return [{id:'1', name:' Group1'}]
+        }
+      }
     });
 
     // Default page for the router
