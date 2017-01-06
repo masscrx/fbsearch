@@ -5,7 +5,8 @@ import AppComponent from './app.component';
 
 // Components
 import Common from './common/common';
-import Components from './components/components'
+import Components from './components/components';
+import Services from './services/services';
 
 // Styles
 import 'bootstrap/dist/css/bootstrap.css'
@@ -13,7 +14,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 angular.module('app', [
   uiRouter,
   Common.name,
-  Components.name
+  Components.name,
+  Services.name
 ])
 
 .config(($locationProvider, $stateProvider, $urlRouterProvider) => {
@@ -30,8 +32,18 @@ angular.module('app', [
         sidebar: 'sidebar'
       },
       resolve: {
-        groups: function() {
-          return [{id:'1', name:' Group1'}]
+        groups: function(GroupService) {
+          return GroupService.all().then((res) => res.data);
+        }
+      }
+    })
+
+    .state({
+      url: '/group/:groupId',
+      name: 'group-details',
+      resolve: {
+        group: function($stateParams) {
+
         }
       }
     });
