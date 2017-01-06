@@ -2,6 +2,7 @@
 
 import angular from 'angular';
 import template from './sidebar.html';
+import './sidebar.scss';
 
 export class SidebarController {
   construct() {
@@ -11,7 +12,9 @@ export class SidebarController {
 
 let sidebarComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    groups: '<'
+  },
   template,
   controller: SidebarController
 }
