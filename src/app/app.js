@@ -14,11 +14,15 @@ import 'bootstrap/dist/css/bootstrap.css'
 // Pages
 import GroupsTemplate from './pages/groups.html';
 
+// Filters
+import Filters from './filters';
+
 angular.module('app', [
   uiRouter,
   Common.name,
   Components.name,
-  Services.name
+  Services.name,
+  Filters.name
 ])
 
 .config(($locationProvider, $stateProvider, $urlRouterProvider) => {
