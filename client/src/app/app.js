@@ -2,6 +2,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import AppComponent from './app.component';
+import Config from './config';
 
 // Components
 import Common from './common/common';
@@ -19,6 +20,7 @@ import Filters from './filters';
 
 angular.module('app', [
   uiRouter,
+  Config.name,
   Common.name,
   Components.name,
   Services.name,

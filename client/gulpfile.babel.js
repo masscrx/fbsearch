@@ -9,6 +9,7 @@ import colorsSupported      from 'supports-color';
 import historyApiFallback   from 'connect-history-api-fallback';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
+import gulpNgConfig from 'gulp-ng-config'
 
 
 let root = 'src';
@@ -44,6 +45,15 @@ gulp.task('clean', (cb) => {
     gutil.log("[clean]", paths);
     cb();
   })
+});
+
+gulp.task('config:dev', function () {
+  gulp.src('config.json')
+    .pipe(gulpNgConfig('app.config', {
+      environment: 'dev',
+      wrap: 'import angular from "angular"; export default <%= module %>'
+    }))
+    .pipe(gulp.dest(resolveToApp()))
 });
 
 gulp.task('serve', () => {

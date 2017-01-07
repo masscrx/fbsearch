@@ -1,21 +1,21 @@
 'use strict';
 
 export default class GroupService {
-  constructor($http) {
+  constructor($http, APP_CONFIG) {
     'ngInject';
     this._$http = $http;
-    this.api_url = '10.0.19.2:3000';
+    this.API_URL = APP_CONFIG.API_URL;
   }
 
   all() {
     return this._$http
-      .get('http://10.0.19.2:3000/groups')
+      .get(this.API_URL + '/groups')
       .then((res) => res);
   }
 
   posts(options) {
     return this._$http({
-      url: 'http://10.0.19.2:3000/groups/' + options.groupId + '/posts' ,
+      url: this.API_URL + '/groups/' + options.groupId + '/posts' ,
       method: 'GET',
       params: {
         nextPage: options.nextPage
