@@ -6,6 +6,6 @@ export default angular
   .module('app.filters', [])
   .filter('getTitleFromMessage', function() {
     return function(message) {
-      return message.slice(0, message.indexOf("\n"));
+      return message ? message.slice(0, message.indexOf("\n")) : "None";
     }
   });
