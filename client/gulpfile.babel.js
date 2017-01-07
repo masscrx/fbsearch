@@ -56,7 +56,7 @@ gulp.task('config:dev', function () {
     .pipe(gulp.dest(resolveToApp()))
 });
 
-gulp.task('serve', () => {
+gulp.task('serve', ['config:dev'], () => {
   const config = require('./webpack.dev.config');
   config.entry.app = [
     // this modules required to make HRM working
