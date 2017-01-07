@@ -1,5 +1,6 @@
 # Config Files
 .env
+src/app/config.js
 
 # Runtime data
 node_modules/
