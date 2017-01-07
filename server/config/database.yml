@@ -7,7 +7,6 @@ default: &default
   username: <%= Figaro.env.db_user %>
   password: <%= Figaro.env.db_pass %>
 
-
 development:
   <<: *default
 
