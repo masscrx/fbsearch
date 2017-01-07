@@ -11,7 +11,7 @@ export class NavbarMainController {
       {
         name: 'Groups',
         component: 'groups',
-        state: 'app.groups'
+        state: 'groups'
       }
     ]
   }

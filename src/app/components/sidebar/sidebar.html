@@ -1,5 +1,5 @@
 <div class="sidebar-container">
   <ul class="list-unstyled">
-    <li ng-repeat="group in $ctrl.groups"><a href="#">{{ group.name }}</a></li>
+    <li ng-repeat="group in $ctrl.groups"><a ui-sref="groups.details({ groupId: group.id })">{{ group.name }}</a></li>
   </ul>
 </div>

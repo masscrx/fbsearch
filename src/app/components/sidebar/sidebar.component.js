@@ -1,6 +1,5 @@
 'use strict';
 
-import angular from 'angular';
 import template from './sidebar.html';
 import './sidebar.scss';
 

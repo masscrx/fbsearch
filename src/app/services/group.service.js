@@ -12,4 +12,15 @@ export default class GroupService {
       .get('http://10.0.19.2:3000/groups')
       .then((res) => res);
   }
+
+  posts(options) {
+    return this._$http({
+      url: 'http://10.0.19.2:3000/groups/' + options.groupId + '/posts' ,
+      method: 'GET',
+      params: {
+        nextPage: options.nextPage
+      }
+    })
+    .then((res) => res)
+  }
 }
