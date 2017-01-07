@@ -32,6 +32,11 @@ class GroupsController < ApplicationController
     @posts = @response.map do |post| 
       post["uid"] = post["id"].partition("_")[0]
       post["pid"] = post["id"].partition("_")[2]
+
+      if !post["message"] && post["story"]
+        post["message"] = post["story"]
+      end
+      
       post
     end
 
