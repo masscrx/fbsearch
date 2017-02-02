@@ -1,7 +1,7 @@
 default: &default
   adapter: mysql2
   pool: 5
-  encoding: utf8
+  encoding: utf8mb4
   socket: /var/run/mysqld/mysqld.sock
   database: <%= Figaro.env.db_name %>
   username: <%= Figaro.env.db_user %>

@@ -10,24 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106195311) do
+ActiveRecord::Schema.define(version: 20170125185056) do
 
-  create_table "groups", force: :cascade do |t|
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "name"
     t.string   "fb_group_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.text     "message"
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.text     "message",      limit: 65535
     t.string   "updated_time"
     t.string   "fb_post_id"
     t.string   "story"
     t.integer  "group_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["group_id"], name: "index_posts_on_group_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.text     "link",         limit: 65535
+    t.text     "picture",      limit: 65535
+    t.text     "from",         limit: 65535
+    t.index ["group_id"], name: "index_posts_on_group_id", using: :btree
   end
 
+  add_foreign_key "posts", "groups"
 end
