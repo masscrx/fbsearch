@@ -35,8 +35,8 @@ angular.module('app', [
   $stateProvider
     
     .state({
-      url: '/groups',
       name: 'groups',
+      url: '/groups',      
       template: GroupsTemplate,
       resolve: {
         groups: function(GroupService) {
@@ -46,8 +46,8 @@ angular.module('app', [
     })
 
     .state({
-      url: '/:groupId',
       name: 'groups.details',
+      url: '/:groupId',      
       component: 'groupDetails'
     });
 
