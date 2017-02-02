@@ -15,10 +15,10 @@ export default class GroupService {
 
   posts(options) {
     return this._$http({
-      url: this.API_URL + '/groups/' + options.groupId + '/posts' ,
+      url: this.API_URL + '/groups/' + options.groupId,
       method: 'GET',
       params: {
-        nextPage: options.nextPage
+        page: options.page
       }
     })
     .then((res) => res)
