@@ -1,6 +1,7 @@
 'use strict';
 
 import template from './group-details.html';
+import './group-details.scss';
 
 export class GroupDetailsController {
   constructor(GroupService, $stateParams) {
@@ -8,14 +9,21 @@ export class GroupDetailsController {
     console.log('Group details loaded');
     console.log($stateParams);
     this._GroupService = GroupService;
-    this.group = { 
+    this.page = 1;
+    this.group = {
       id: $stateParams.groupId,
       posts: []
     };
   }
 
   $onInit() {
-    this._GroupService.posts({ groupId: this.group.id }).then((res) => this.group.posts = res.data)
+    console.log('on init');
+    this._GroupService
+      .posts( { groupId: this.group.id, page: this.page } )
+      .then( (res) => {
+        this.group.posts = res.data.posts;
+        this.group.name = res.data.group.name;
+      })
   }
 }
 
