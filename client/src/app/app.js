@@ -10,7 +10,8 @@ import Components from './components/components';
 import Services from './services/services';
 
 // Styles
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'font-awesome/css/font-awesome.css';
 
 // Pages
 import GroupsTemplate from './pages/groups.html';
