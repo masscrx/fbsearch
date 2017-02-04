@@ -23,4 +23,11 @@ export default class GroupService {
     })
     .then((res) => res)
   }
+
+  updatePosts(group) {
+    return this._$http({
+      url: this.API_URL + '/groups/' + group.id,
+      method: 'GET'
+    })
+  }
 }

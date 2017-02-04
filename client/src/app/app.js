@@ -14,13 +14,17 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 
 // Pages
-import GroupsTemplate from './pages/groups.html';
+import GroupDetailsTemplate from './pages/group-details.html';
 
 // Filters
 import Filters from './filters';
 
+// Libs
+import ngProgress from './lib/ng-progress';
+
 angular.module('app', [
   uiRouter,
+  ngProgress.name,
   Config.name,
   Common.name,
   Components.name,
@@ -37,8 +41,7 @@ angular.module('app', [
     
     .state({
       name: 'groups',
-      url: '/groups',      
-      template: GroupsTemplate,
+      url: '/groups',
       resolve: {
         groups: function(GroupService) {
           return GroupService.all().then((res) => res.data);
@@ -48,8 +51,8 @@ angular.module('app', [
 
     .state({
       name: 'groups.details',
-      url: '/:groupId',      
-      component: 'groupDetails'
+      url: '/:groupId',
+      template: GroupDetailsTemplate,
     });
 
     // Default page for the router

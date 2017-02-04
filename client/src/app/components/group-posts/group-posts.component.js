@@ -1,13 +1,13 @@
 'use strict';
 
-import template from './group-details.html';
-import './group-details.scss';
+import template from './group-posts.html';
+import './group-posts.scss';
 
-export class GroupDetailsController {
+export class GroupPostsController {
+  /*@ngInject*/
   constructor(GroupService, $stateParams) {
-    'ngInject';
-    console.log('Group details loaded');
-    console.log($stateParams);
+    console.log('Group posts loaded');
+
     this._GroupService = GroupService;
     this.page = 1;
     this.group = {
@@ -27,13 +27,12 @@ export class GroupDetailsController {
   }
 }
 
-let groupDetailsComponent = {
-  restrict: 'E',
+let groupPostsComponent = {
   template: template,
-  controller: GroupDetailsController,
+  controller: GroupPostsController,
   bindings: {
 
   }
 }
 
-export default groupDetailsComponent;
+export default groupPostsComponent;
