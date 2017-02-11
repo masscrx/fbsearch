@@ -12,9 +12,7 @@ export class GroupDetailsController {
 GroupDetailsController.$inject = ['GroupService'];
 
 let groupDetailsComponent = {
-  bindings: {
-
-  },
+  bindings: {},
   template: template,
   controller: GroupDetailsController
 }

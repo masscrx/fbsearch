@@ -6,8 +6,6 @@ import './group-posts.scss';
 export class GroupPostsController {
   /*@ngInject*/
   constructor(GroupService, $stateParams) {
-    console.log('Group posts loaded');
-
     this._GroupService = GroupService;
     this.page = 1;
     this.group = {
@@ -17,7 +15,6 @@ export class GroupPostsController {
   }
 
   $onInit() {
-    console.log('on init');
     this._GroupService
       .posts( { groupId: this.group.id, page: this.page } )
       .then( (res) => {
@@ -29,10 +26,7 @@ export class GroupPostsController {
 
 let groupPostsComponent = {
   template: template,
-  controller: GroupPostsController,
-  bindings: {
-
-  }
+  controller: GroupPostsController
 }
 
 export default groupPostsComponent;

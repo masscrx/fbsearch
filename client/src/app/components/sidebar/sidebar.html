@@ -3,7 +3,7 @@
     <ul class="nav">
       <li ng-repeat="group in $ctrl.groups">
         <a ui-sref="groups.details({ groupId: group.id })">{{ group.name }}</a>
-        <i class="fa fa-refresh" ng-click="$ctrl.updatePosts(group)"></i>
+        <i class="fa fa-refresh clickable" ng-click="$ctrl.updatePosts(group)"></i>
       </li>
     </ul>
   </div>
