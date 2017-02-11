@@ -4,7 +4,8 @@ import template from './sidebar.html';
 import './sidebar.scss';
 
 export class SidebarController {
-  construct(ngProgressFactory, GroupService) {
+  /*@ngInject*/
+  constructor(ngProgressFactory, GroupService) {
     console.log('Sidebar component loaded');
     this._GroupService = GroupService;
     this.progressbar = ngProgressFactory.createInstance();
