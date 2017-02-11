@@ -14,7 +14,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 
 // Pages
-import GroupDetailsTemplate from './pages/group-details.html';
+import GroupPostsTemplate from './pages/group-posts.html';
 
 // Filters
 import Filters from './filters';
@@ -52,7 +52,7 @@ angular.module('app', [
     .state({
       name: 'groups.details',
       url: '/:groupId',
-      template: GroupDetailsTemplate,
+      template: GroupPostsTemplate,
     });
 
     // Default page for the router
