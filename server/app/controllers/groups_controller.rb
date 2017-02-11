@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
     # https://graph.facebook.com/v2.8/192228117567250/feed?access_token=243000339457993|MaH2-0IIv_ov8BcKC2v-mbCgxuo&limit=100
     # &fields=full_picture,picture,id,message,name,caption,description,updated_time,link,icon,from,privacy,type,status_type,application,object_id,story,story_tags,actions
     # "full_picture,id,message,updated_time,link,from,application,story,story_tags,actions"
-    
+    @per_page = 30
     group = Group.find(params[:group_id])
     uri = URI("https://graph.facebook.com/v2.8/#{group.fb_group_id}/feed")
     post_params = {
@@ -50,7 +50,7 @@ class GroupsController < ApplicationController
     end
 
     @data = {
-      data: @posts.take(100),
+      data: @posts.take(@per_page),
       total: @posts.count
     }
 
@@ -67,7 +67,7 @@ class GroupsController < ApplicationController
     Post.delete_all
 
     if Post.create(@posts)
-      render json: { status: "Posts updated" }
+      render json: @data
     else
       render json: @posts.errors, status: :unprocessable_entity
     end

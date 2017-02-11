@@ -4,8 +4,9 @@ import template from './group-details.html';
 //import './group-details.scss';
 
 export class GroupDetailsController {
-  constructor(GroupService, $stateParams) {
+  constructor(GroupService, $stateParams, ngProgressFactory) {
     this._GroupService = GroupService;
+    this.progressbar = ngProgressFactory.createInstance();
     this.page = 1;
     this.group = {
       id: $stateParams.groupId,
@@ -27,9 +28,24 @@ export class GroupDetailsController {
       .all()
       .then( (res) => this.groups = res.data );
   }
+
+  updatePosts(group) {
+    console.log('group', group);
+    
+    this.progressbar.setParent(document.getElementById('group_link'));
+    this.progressbar.start();
+
+    this._GroupService
+      .updatePosts({groupId: group.id})
+      .then( (res) => {
+        this.group.posts = res.data;
+        this.progressbar.setColor('#5ff442');
+        this.progressbar.complete();
+      })
+  }  
 }
 
-GroupDetailsController.$inject = ['GroupService', '$stateParams'];
+GroupDetailsController.$inject = ['GroupService', '$stateParams', 'ngProgressFactory'];
 
 let groupDetailsComponent = {
   bindings: {},

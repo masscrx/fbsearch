@@ -10,7 +10,7 @@ export default class GroupService {
   all() {
     return this._$http
       .get(this.API_URL + '/groups')
-      .then((res) => res);
+      .then( (res) => res );
   }
 
   posts(options) {
@@ -21,13 +21,14 @@ export default class GroupService {
         page: options.page
       }
     })
-    .then((res) => res)
+    .then( (res) => res )
   }
 
-  updatePosts(group) {
+  updatePosts(options) {
     return this._$http({
-      url: this.API_URL + '/groups/' + group.id,
+      url: this.API_URL + '/groups/' + options.groupId + '/update_posts',
       method: 'GET'
     })
+    .then( (res) => res )
   }
 }
