@@ -14,7 +14,8 @@ let sidebarComponent = {
   restrict: 'E',
   bindings: {
     groups: '<',
-    onUpdatePosts: '&'
+    onUpdatePosts: '&',
+    showRefreshButton: '<'
   },
   template,
   controller: SidebarController

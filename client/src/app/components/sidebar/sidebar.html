@@ -1,9 +1,15 @@
 <div class="col-md-2">
+<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>
   <div class="sidebar content-box" style="display: block;">
     <ul class="nav">
       <li ng-repeat="group in $ctrl.groups" id="group_link">
-        <a ui-sref="groups.details({ groupId: group.id })">{{ group.name }}</a>
-        <i class="fa fa-refresh clickable" ng-click="$ctrl.onUpdatePosts({group: group})"></i>
+        <a ui-sref="groups.details({ groupId: group.id })">
+        {{ group.name }}
+        <i class="fa fa-refresh clickable pull-right" 
+           ng-click="$ctrl.onUpdatePosts({group: group})" 
+           ng-show="$ctrl.showRefreshButton">
+        </i>
+        </a>
       </li>
     </ul>
   </div>

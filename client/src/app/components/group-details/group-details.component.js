@@ -1,12 +1,15 @@
 'use strict';
 
 import template from './group-details.html';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+
 //import './group-details.scss';
 
 export class GroupDetailsController {
-  constructor(GroupService, $stateParams, ngProgressFactory) {
+  constructor(GroupService, $stateParams) {
     this._GroupService = GroupService;
-    this.progressbar = ngProgressFactory.createInstance();
+    this.showRefreshButton = true;
     this.page = 1;
     this.group = {
       id: $stateParams.groupId,
@@ -32,15 +35,17 @@ export class GroupDetailsController {
   updatePosts(group) {
     console.log('group', group);
     
-    this.progressbar.setParent(document.getElementById('group_link'));
-    this.progressbar.start();
+    this.showRefreshButton = false;
+    NProgress.configure({ parent: '#group_link' });
+    NProgress.start();
 
     this._GroupService
       .updatePosts({groupId: group.id})
       .then( (res) => {
-        this.group.posts = res.data;
-        this.progressbar.setColor('#5ff442');
-        this.progressbar.complete();
+        console.log(res)
+        this.group.posts = res.data.data;
+        NProgress.done();
+        this.showRefreshButton = true;
       })
   }  
 }
