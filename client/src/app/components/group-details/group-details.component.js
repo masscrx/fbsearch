@@ -1,6 +1,7 @@
 'use strict';
 
 import template from './group-details.html';
+
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 
@@ -18,23 +19,13 @@ export class GroupDetailsController {
   }
 
   $onInit() {
-    // Get posts
-    this._GroupService
-      .posts( { groupId: this.group.id, page: this.page } )
-      .then( (res) => {
-        this.group.posts = res.data.posts;
-        this.group.name = res.data.group.name;
-      })
-
     // Get groups
     this._GroupService
       .all()
       .then( (res) => this.groups = res.data );
   }
 
-  updatePosts(group) {
-    console.log('group', group);
-    
+  updatePosts(group) {    
     this.showRefreshButton = false;
     NProgress.configure({ parent: '#group_link' });
     NProgress.start();
@@ -47,10 +38,19 @@ export class GroupDetailsController {
         NProgress.done();
         this.showRefreshButton = true;
       })
+  }
+
+  loadPosts() {
+    this._GroupService
+      .posts( { groupId: this.group.id, page: this.page } )
+      .then( (res) => {
+        this.group.posts = this.group.posts.concat(res.data.posts);
+      })
+    this.page++   
   }  
 }
 
-GroupDetailsController.$inject = ['GroupService', '$stateParams', 'ngProgressFactory'];
+GroupDetailsController.$inject = ['GroupService', '$stateParams'];
 
 let groupDetailsComponent = {
   bindings: {},

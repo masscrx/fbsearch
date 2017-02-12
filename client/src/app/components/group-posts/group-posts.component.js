@@ -11,7 +11,8 @@ let groupPostsComponent = {
   template: template,
   controller: GroupPostsController,
   bindings: {
-    posts: '<'
+    posts: '<',
+    onLoadMore: '&'
   }
 }
 

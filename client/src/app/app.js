@@ -4,6 +4,9 @@ import uiRouter from 'angular-ui-router';
 import AppComponent from './app.component';
 import Config from './config';
 
+// Modules
+import 'ng-infinite-scroll';
+
 // Components
 import Common from './common/common';
 import Components from './components/components';
@@ -19,12 +22,9 @@ import 'font-awesome/css/font-awesome.css';
 // Filters
 import Filters from './filters';
 
-// Libs
-import ngProgress from './lib/ng-progress';
-
 angular.module('app', [
+  'infinite-scroll',
   uiRouter,
-  ngProgress.name,
   Config.name,
   Common.name,
   Components.name,
