@@ -3,8 +3,8 @@
     <div class="post-box">
 
       <div class="post-header">
-        <span> {{post.message | getTitleFromMessage | limitTo: 45 }} </span>
-        <span class="post-info">{{ post.created_at | date }} | Marek Bozych</span>
+        <a href="http://facebook.com/{{post.fb_post_id}}">{{post.message | getTitleFromMessage | limitTo: 45 }}</a>
+        <span class="post-info">{{ post.created_at | date }} | {{ post.from.name }}</span>
       </div>
 
       <div class="post-content">
